@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 //controllerからviewに渡すときに、Inertia::renderが必要なので、use文が必要
-use App\Models\TodoList;
+use App\Models\Test;
 //DBにデータを保存する際は、modelsを使用した方が使いやすい
 
 class InertiaTestController extends Controller
@@ -13,7 +13,7 @@ class InertiaTestController extends Controller
     public function index()
     {
         return Inertia::render('Inertia/Index', [
-            'blogs' => TodoList::all()
+            'blogs' => Test::all()
         ]);
     }
 
@@ -27,7 +27,7 @@ class InertiaTestController extends Controller
         return Inertia::render('Inertia/Show',
     [
         'id' => $id,
-        'blog' => TodoList::findOrFail($id)
+        'blog' => Test::findOrFail($id)
         //ex:id「１」が渡ってきたら、1番目の情報を取得して、変数blogでview側に渡す
     ]);
     }
@@ -42,7 +42,7 @@ class InertiaTestController extends Controller
         ]);
         //バリデーションに引っ掛かったら、view側にerrorsというオブジェクトが渡る
 
-        $TodoList = new TodoList;
+        $TodoList = new Test;
         $TodoList->title = $request->title;
         $TodoList->content = $request->content;
         $TodoList->save();
@@ -59,7 +59,7 @@ class InertiaTestController extends Controller
 
     public function delete($id)
     {
-        $book = TodoList::findOrFail($id);
+        $book = Test::findOrFail($id);
         $book->delete();
 
         return to_route('inertia.index')

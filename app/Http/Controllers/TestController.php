@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\TodoList;
+use App\Models\Test;
 
 
 class TodoListController extends Controller
 {
     public function index()
     {
-        $values = TodoList::all();
+        $values = Test::all();
 
         //dd($values);
         //phpのdie + var_dump のようなもの(dieで処理を止めて、var_dumpで内容を確認)
