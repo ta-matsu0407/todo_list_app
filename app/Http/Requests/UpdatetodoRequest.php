@@ -13,7 +13,7 @@ class UpdatetodoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true; // trueに変えないと保存できない
     }
 
     /**
@@ -24,7 +24,10 @@ class UpdatetodoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required|string|max:255',
+            'memo' => 'nullable|string',
+            'due_date' => 'required|date_format:Y-m-d', // YYYY-MM-DD形式であることを確認
+            'status' => 'required|integer',
         ];
     }
 }

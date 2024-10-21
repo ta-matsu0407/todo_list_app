@@ -161,7 +161,8 @@ return [
       'age' => '年齢',
       'contact' => 'お問い合わせ内容',
       'caution' => '注意事項',
-      'content' =>'本文'
+      'content' =>'本文',
+      'due_date' =>'期限日'
     ],
 
 ];

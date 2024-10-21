@@ -32,6 +32,9 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </NavLink>
+                                <NavLink :href="route('todos.index')" :active="route().current('todos.index')">
+                                    TODOリスト
+                                </NavLink>
                             </div>
                         </div>
 
@@ -107,6 +110,7 @@ const showingNavigationDropdown = ref(false);
                 </div>
 
                 <!-- Responsive Navigation Menu -->
+                <!-- これはスマホの場合(Responsive対応) -->
                 <div
                     :class="{ block: showingNavigationDropdown, hidden: !showingNavigationDropdown }"
                     class="sm:hidden"
@@ -114,6 +118,9 @@ const showingNavigationDropdown = ref(false);
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('todos.index')" :active="route().current('todos.index')">
+                            TODOリスト
                         </ResponsiveNavLink>
                     </div>
 

@@ -14,6 +14,7 @@ class TodoListController extends Controller
 
         //dd($values);
         //phpのdie + var_dump のようなもの(dieで処理を止めて、var_dumpで内容を確認)
+        //Laravelのデバック用コマンド
 
         return view('todo_list.index', compact('values'));
         //resources/views/todoLists/todoList.blade.php
