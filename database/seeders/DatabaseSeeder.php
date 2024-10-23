@@ -19,5 +19,7 @@ class DatabaseSeeder extends Seeder
             TodoSeeder::class
         ]);
 
+        \App\Models\Student::factory(1000)->create();
+
     }
 }

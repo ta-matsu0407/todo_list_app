@@ -2,6 +2,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
 import { nl2br } from '@/common';
+import { Inertia } from '@inertiajs/inertia'
 
 defineProps({
     todo: Object
@@ -9,10 +10,9 @@ defineProps({
 //controller側から、objectが渡ってくる
 
 const deleteTodo = id => {
-    Inertia.delete(`/inertia/${id}`, {
+    Inertia.delete(route('todos.destroy', { todo: id }), {
     onBefore: () => confirm('本当に削除しますか?')
-})
-//jsの記述方法で、バッククォートで記述
+    })
 }
 </script>
 
@@ -76,7 +76,7 @@ const deleteTodo = id => {
                                                 <Link as="button" :href="route('todos.edit', { todo: todo.id})" class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">編集する</Link>
                                             </div>
                                             <div class="p-2 w-full">
-                                                <Link as="button" :href="route('todos.edit', { todo: todo.id})" class="flex mx-auto text-white bg-red-500 border border-black z-10 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">削除する</Link>
+                                                <button @click="deleteTodo(todo.id)" class="flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">削除する</button>
                                             </div>
                                         </div>
                                     </div>

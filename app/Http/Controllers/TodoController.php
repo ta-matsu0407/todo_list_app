@@ -123,6 +123,12 @@ class TodoController extends Controller
      */
     public function destroy(todo $todo)
     {
-        //
+        $todo->delete();
+
+        return to_route('todos.index')
+        ->with([
+            'message' => '削除しました。',
+            'status' => 'danger'
+        ]);
     }
 }

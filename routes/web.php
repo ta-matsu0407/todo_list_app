@@ -6,11 +6,16 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\InertiaTestController;
 use App\Http\Controllers\TodoController;
+use App\Http\Controllers\StudentController;
+
 
 Route::resource('todos', TodoController::class)
 ->middleware(['auth', 'verified']);
 // ログイン(認証)指定たら表示
 // Route::resourceで7つのURL(リソースコントローラ)をまとめて設定できる
+
+Route::resource('students', StudentController::class)
+->middleware(['auth', 'verified']);
 
 Route::get('/inertia-test', function () {
     return Inertia::render('InertiaTest');

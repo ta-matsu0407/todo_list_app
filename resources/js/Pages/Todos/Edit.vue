@@ -24,6 +24,8 @@ const updateTodo = id => {
 }
 //const: 再代入できない変数(定数)を宣言
 //メソッド名は動詞名詞
+//ルート側で指定しているメソッドに合わせて、postではなくputにする
+//php artisan route:list
 
 </script>
 
@@ -75,18 +77,19 @@ const updateTodo = id => {
                                                 <div class="relative">
                                                     <label class="leading-7 text-sm text-gray-600">ステータス</label>
                                                     <div>
-                                                        <label>
-                                                            <input type="radio" v-model="form.status" value="0">
+                                                        <label for="status0">
+                                                            <input type="radio" id="status0" name="status" v-model="form.status" value="0">
                                                             未実施
                                                         </label>
-                                                        <label>
-                                                            <input type="radio" v-model="form.status" value="1">
+                                                        <label for="status1">
+                                                            <input type="radio" id="status1" name="status" v-model="form.status" value="1">
                                                             実施中
                                                         </label>
-                                                        <label>
-                                                            <input type="radio" v-model="form.status" value="2">
+                                                        <label for="status2">
+                                                            <input type="radio" id="status2" name="status" v-model="form.status" value="2">
                                                             実施済み
                                                         </label>
+                                                        <!-- labelにforを付けて、idと合わせることで、文字クリックでもラジオボタンにチェックできる -->
                                                     </div>
                                                 </div>
                                             </div>

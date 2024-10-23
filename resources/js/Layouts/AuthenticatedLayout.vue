@@ -35,6 +35,9 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink :href="route('todos.index')" :active="route().current('todos.index')">
                                     TODOリスト
                                 </NavLink>
+                                <NavLink :href="route('students.index')" :active="route().current('students.index')">
+                                    生徒リスト
+                                </NavLink>
                             </div>
                         </div>
 
@@ -121,6 +124,9 @@ const showingNavigationDropdown = ref(false);
                         </ResponsiveNavLink>
                         <ResponsiveNavLink :href="route('todos.index')" :active="route().current('todos.index')">
                             TODOリスト
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('students.index')" :active="route().current('students.index')">
+                            生徒リスト
                         </ResponsiveNavLink>
                     </div>
 
