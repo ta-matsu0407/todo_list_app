@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -56,6 +57,25 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Adminユーザー用のプロフィールルート
+Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/profile', [AdminProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [AdminProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [AdminProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
 
 
 require __DIR__.'/auth.php';
+
+Route::prefix('admin')->name('admin.')
+->group(function(){
+
+    Route::get('/dashboard', function() {
+        return Inertia::render('Admin/Dashboard');
+    })->middleware(['auth:admin', 'verified'])
+    ->name('dashboard');
+
+    require __DIR__.'/admin.php';
+});
+
